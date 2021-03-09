@@ -9,21 +9,15 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        title: Text('Home Screens'),
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
       body: Center(
-        child: Text('Learning Flutter',
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2.0,
-                color: Colors.grey[600],
-                fontFamily: 'Lato')),
+        child: Image.asset('assets/flowers.png'),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Text('Click'),
+        child: Text('+'),
         onPressed: () => print('Pressed'),
         backgroundColor: Colors.redAccent,
       ),
