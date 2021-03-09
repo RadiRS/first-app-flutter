@@ -9,16 +9,19 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screens'),
+        title: Text('Home Screen'),
         centerTitle: true,
         backgroundColor: Colors.red[600],
       ),
       body: Center(
-        child: Image.asset('assets/flowers.png'),
+        child: IconButton(
+            icon: Icon(Icons.alternate_email),
+            onPressed: () => {print('Icon Pressed')},
+            color: Colors.blueAccent),
       ),
       floatingActionButton: FloatingActionButton(
         child: Text('+'),
-        onPressed: () => print('Pressed'),
+        onPressed: () => print('Floting Pressed'),
         backgroundColor: Colors.redAccent,
       ),
     );
