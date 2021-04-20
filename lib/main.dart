@@ -6,7 +6,7 @@ import 'package:first_app/pages/home.dart';
 void main() {
   runApp(MaterialApp(
     // home: Home(), // cant use because conflict with intial routes, instate use a initialRoute to change default route
-    initialRoute: '/home',
+    initialRoute: '/',
     routes: {
       '/': (context) => Loading(),
       '/home': (context) => Home(),
