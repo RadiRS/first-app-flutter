@@ -11,13 +11,27 @@ class _ChooseLocationState extends State<ChooseLocation> {
   @override
   void initState() {
     super.initState();
-    print('initial state');
+    getDate();
+  }
+
+  void getDate() async {
+    //  simulate network request
+    String username = await Future.delayed(Duration(seconds: 3), () {
+      // similiar with setTimeOut
+      return "radi";
+    });
+
+    //  simulate network request to get data
+    String bio = await Future.delayed(Duration(seconds: 2), () {
+      // similiar with setTimeOut
+      return "software engineer";
+    });
+
+    print('$username is $bio');
   }
 
   @override
   Widget build(BuildContext context) {
-    print('build fuction');
-
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
