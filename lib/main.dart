@@ -6,7 +6,14 @@ void main() {
   ));
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  int level = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +22,12 @@ class App extends StatelessWidget {
         title: Text('ID Card'),
         centerTitle: true,
         backgroundColor: Colors.grey[800],
+        elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => setState(() => level += 1),
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey,
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -44,7 +57,7 @@ class App extends StatelessWidget {
             Text('Level',
                 style: TextStyle(color: Colors.grey, letterSpacing: 2.0)),
             SizedBox(height: 10),
-            Text('30',
+            Text('$level',
                 style: TextStyle(
                     color: Colors.amberAccent,
                     letterSpacing: 2.0,
