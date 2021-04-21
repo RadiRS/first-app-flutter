@@ -10,26 +10,31 @@ class WorldTime {
   WorldTime({this.location, this.flag, this.url});
 
   Future<void> getTime() async {
-    // create a promise used a Future key
-    Response response =
-        await get(Uri.parse('https://worldtimeapi.org/api/timezone/$url'));
+    try {
+      // create a promise used a Future key
+      Response response =
+          await get(Uri.parse('https://worldtimeapi.org/api/timezone/$url'));
 
-    Map data = jsonDecode(response.body);
+      Map data = jsonDecode(response.body);
 
-    // print(data);
+      // print(data);
 
-    // get propertiest from data
-    String datetime = data['datetime'];
-    String offset = data['utc_offset'].substring(1, 3);
+      // get propertiest from data
+      String datetime = data['datetime'];
+      String offset = data['utc_offset'].substring(1, 3);
 
-    // print('$datetime $offset');
+      // print('$datetime $offset');
 
-    // create datetime object
-    DateTime now = DateTime.parse(datetime);
-    now = now.add(Duration(hours: int.parse(offset)));
-    // print(now);
+      // create datetime object
+      DateTime now = DateTime.parse(datetime);
+      now = now.add(Duration(hours: int.parse(offset)));
+      // print(now);
 
-    // set time properti
-    time = now.toString();
+      // set time properti
+      time = now.toString();
+    } catch (e) {
+      print('error $e');
+      time = 'coult not get time data';
+    }
   }
 }
