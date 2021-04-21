@@ -21,10 +21,11 @@ class _LoadingState extends State<Loading> {
 
     await instance.getTime();
 
-    print(instance.time);
-
-    setState(() {
-      time = instance.time;
+    // navigato to home screen & parsing the data
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time
     });
   }
 
@@ -33,7 +34,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.all(50),
-      child: Text(time),
+      child: Text('loading...'),
     ));
   }
 }
