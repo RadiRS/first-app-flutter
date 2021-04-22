@@ -5,6 +5,9 @@ import 'package:miniplayer/miniplayer.dart';
 import 'home_screen.dart';
 
 final selectedVideoProvider = StateProvider<Video?>((ref) => null);
+final miniPlayerControllerProvider =
+    StateProvider.autoDispose<MiniplayerController>(
+        (ref) => MiniplayerController());
 
 class NavScreen extends StatefulWidget {
   @override
@@ -29,7 +32,7 @@ class _NavScreenState extends State<NavScreen> {
     return Scaffold(
       body: Consumer(builder: (context, watch, _) {
         final selectedVideo = watch(selectedVideoProvider).state;
-        print(selectedVideo);
+        final miniPlayerController = watch(miniPlayerControllerProvider).state;
 
         return Stack(
           children: _screens
@@ -42,6 +45,7 @@ class _NavScreenState extends State<NavScreen> {
                   Offstage(
                     offstage: selectedVideo == null,
                     child: Miniplayer(
+                      controller: miniPlayerController,
                       minHeight: _playerMinHeight,
                       maxHeight: MediaQuery.of(context).size.height,
                       builder: (height, percentage) {
