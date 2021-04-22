@@ -22,6 +22,8 @@ class VideoCard extends StatelessWidget {
             .read(miniPlayerControllerProvider)
             .state
             .animateToHeight(state: PanelState.MAX);
+
+        if (onTap != null) onTap!();
       },
       child: Column(
         children: [
