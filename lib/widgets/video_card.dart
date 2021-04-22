@@ -8,8 +8,10 @@ import '../data.dart';
 
 class VideoCard extends StatelessWidget {
   final Video video;
+  final bool hasPadding;
+  final VoidCallback? onTap;
 
-  const VideoCard({required this.video});
+  const VideoCard({required this.video, this.hasPadding = false, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +27,20 @@ class VideoCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.network(video.thumbnailUrl,
-                  height: 220.0, width: double.infinity, fit: BoxFit.cover),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: hasPadding ? 12.0 : 0,
+                ),
+                child: Image.network(
+                  video.thumbnailUrl,
+                  height: 220.0,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
               Positioned(
                   bottom: 8.0,
-                  right: 8.0,
+                  right: hasPadding ? 22.0 : 8.0,
                   child: Container(
                     padding: EdgeInsets.all(4.0),
                     color: Colors.black,
