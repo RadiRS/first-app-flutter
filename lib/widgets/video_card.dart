@@ -63,7 +63,7 @@ class VideoCard extends StatelessWidget {
                         child: Text(
                           video.title,
                           maxLines: 2,
-                          overflow: TextOverflow.clip,
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1!
@@ -74,7 +74,7 @@ class VideoCard extends StatelessWidget {
                         child: Text(
                           '${video.author.username} • ${video.viewCount} views • ${timeago.format(video.timestamp)}',
                           maxLines: 2,
-                          overflow: TextOverflow.clip,
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1!
