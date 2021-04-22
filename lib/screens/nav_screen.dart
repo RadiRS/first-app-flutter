@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_youtube_ui/data.dart';
+import 'package:flutter_youtube_ui/screens/video_screen.dart';
 import 'package:miniplayer/miniplayer.dart';
 import 'home_screen.dart';
 
@@ -50,6 +51,9 @@ class _NavScreenState extends State<NavScreen> {
                       maxHeight: MediaQuery.of(context).size.height,
                       builder: (height, percentage) {
                         if (selectedVideo == null) return SizedBox.shrink();
+
+                        if (height >= _playerMinHeight + 50)
+                          return VideoScreen();
 
                         return Container(
                           color: Theme.of(context).scaffoldBackgroundColor,
